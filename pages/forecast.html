@@ -1,0 +1,26 @@
+<h1>Forecast for {{ city }}</h1>
+<hr>
+<h4>Number of days</h4>
+<nav>
+    <ul class="pagination">
+        <li ng-class="{ 'active': days === '3'}"><a href="#/forecast/3">3</a></li>
+        <li ng-class="{ 'active': days === '5'}"><a href="#/forecast/5">5</a></li>
+        <li ng-class="{ 'active': days === '7'}"><a href="#/forecast/7">7</a></li>
+        <li ng-class="{ 'active': days === '10'}"><a href="#/forecast/10">10</a></li>
+        <li ng-class="{ 'active': days === '16'}"><a href="#/forecast/16">16</a></li>
+    </ul>
+</nav>
+<div ng-repeat="w in weatherResult.list">
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"> {{ convertToDate(w.dt) | date : medium }} </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="(key, temp) in w.temp">{{ key }} : {{ convertToDegree(temp) }}&#8451;</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
